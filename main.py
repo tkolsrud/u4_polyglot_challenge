@@ -14,6 +14,16 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def add_list(*args):
+    sum = 0
+    for arg in args:
+        if not arg:
+            return 0
+        if type(arg) is int:
+            sum += arg
+        else:
+            return "NaN"
+    return sum 
 #-----------------------------------------------
 
 
@@ -31,8 +41,9 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def remove_ends(str):
+    return str[1:-1]
 #-----------------------------------------------
-
 
 
 # Challenge 3: is_palindrome
@@ -50,6 +61,12 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def is_palindrome(str):
+  str = str.lower().replace(' ', '')
+  if str == str[::-1]:
+    return True
+  else:
+    return False 
 #-----------------------------------------------
 
 
@@ -68,6 +85,12 @@
 
 #-----------------------------------------------
 # Solution goes here ->
+def is_prime(int):
+  if int > 1:
+    for num in range(2,int):
+      if int % num == 0:
+        return False
+    return True
 #-----------------------------------------------
 
 
@@ -79,17 +102,28 @@
 
 # Your function should take the list and the user's homestate as arguments
 
-# shopping_cart = [ 
-#   {"item": "headphones", "price": 25},
-#   {"item": "speakers", "price": 40 },
-#   {"item": "microphone", "price": 70},
-#   {"item": "lamp", "price": 15 },
-#   {"item": "tower fan", "price": 35 },
-# ]
+shopping_cart = [ 
+  {"item": "headphones", "price": 25},
+  {"item": "speakers", "price": 40 },
+  {"item": "microphone", "price": 70},
+  {"item": "lamp", "price": 15 },
+  {"item": "tower fan", "price": 35 },
+]
 
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def calc_cost(list, homestate):
+   ship10 = ['HI', 'AK', 'TX', 'FL']
+   ship5 = ['AL', 'MS', 'NV', 'IL']
+   total = 0
+   for item in list:
+       total += item["price"]
+   if homestate in ship10:
+      total += 10
+   if homestate in ship5:
+      total += 5
+   return total 
 #-----------------------------------------------
 
 
@@ -107,6 +141,18 @@
 
 #-----------------------------------------------
 # Solution Goes Here ->
+def fizz_buzz(num):
+   if type(num) is int:
+      if num % 3 == 0 and num % 5 ==0:
+         return 'FizzBuzz'
+      if num % 3 == 0 and num % 5 != 0:
+         return 'Fizz'
+      if num % 5 == 0:
+         return 'Buzz'
+      else:
+         return num
+   else: 
+      return f"{num} is not a Number"
 #-----------------------------------------------
 
 
@@ -146,4 +192,22 @@
 
 #-----------------------------------------------
 # Solution Goes Here - >
+def chessboard(int1, int2):
+   board = []
+   for idx in range(int1):
+      row = []
+      if idx > 0 and idx % 2 != 0:
+         is_o = False
+      else:
+         is_o = True 
+      for idx in range(int2):
+         if is_o:
+            is_o = not is_o
+            row.append("o")
+         else:
+            is_o = not is_o
+            row.append("x")
+      board.append(row)
+
+   return board
 #-----------------------------------------------
